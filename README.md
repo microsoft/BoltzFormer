@@ -1,19 +1,16 @@
-# **"Boltzmann Attention Sampling for Image Analysis with Small Objects"** ([*CVPR 2025*](https://arxiv.org/abs/2503.02841))
+# **Boltzmann Attention Sampling for Image Analysis with Small Objects** ([*CVPR 2025*](https://arxiv.org/abs/2503.02841))
 
 [Theodore Zhao*](https://theodore-zhao.github.io/theozhao/), [Sid Kiblawi*](https://sidkiblawi.github.io/about/), [Naoto Usuyama](https://www.microsoft.com/en-us/research/people/naotous/), [Ho Hin Lee](https://scholar.google.com/citations?user=BsBdSpoAAAAJ&hl=en), [Sam Preston](https://scholar.google.com/citations?hl=en&user=E4FUfrsAAAAJ), [Hoifung Poon](https://scholar.google.com/citations?user=yqqmVbkAAAAJ&hl=en), [Mu Wei‡](https://www.linkedin.com/in/mu-wei-038a3849/)
 
 
 **BoltzFormer** is designed for text promptable segmentation, with superior performance for small objects. It performs Boltzmann sampling within the attention mechanism in the transformer, allowing the model to efficiently focus on relevant regions to attend to. BoltzFormer employs an annealing process through the layers to let the model explore then exploit, mimicing a reinforcement learning process within the transformer itself.
 
-<img src='assets/Model.png' width=800>
+<img src='assets/Model.png' width=750>
 
 **See less, learn more**
 Boltzmann attention sampling estimates a probability distribution on the image at every layer, and subsample a small portion of patches to attend to. The model learns to make better "guesses" through the layers, and gradually focus on the region of interest.   
 
-<div style="display: flex; align-items: center;">
-  <img src="assets/Attention.png" style="width:400px; margin-right: 10px;">
-  <img src="assets/Sampling.png" style="width:500px;">
-</div>
+<img src='assets/AttentionSampling.png' width=750>
 
 ## Installation
 ```sh
@@ -31,6 +28,7 @@ Install dependencies
 pip install -r assets/requirements.txt
 pip install git+https://github.com/facebookresearch/detectron2.git
 ```
+
 
 ## Example Usage
 We provide the basic model forward pass usage below. We will release the associated training and evaluation framework soon.
