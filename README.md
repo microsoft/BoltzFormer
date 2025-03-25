@@ -1,6 +1,6 @@
-# BoltzFormer
+# **"Boltzmann Attention Sampling for Image Analysis with Small Objects"** ([*CVPR 2025*](https://arxiv.org/abs/2503.02841))
 
-This repository hosts the code for the paper **"Boltzmann Attention Sampling for Image Analysis with Small Objects"** ([*CVPR 2025*](https://arxiv.org/abs/2503.02841)).
+[Theodore Zhao*](https://theodore-zhao.github.io/theozhao/), [Sid Kiblawi*](https://sidkiblawi.github.io/about/), [Naoto Usuyama](https://www.microsoft.com/en-us/research/people/naotous/), [Ho Hin Lee](https://scholar.google.com/citations?user=BsBdSpoAAAAJ&hl=en), [Sam Preston](https://scholar.google.com/citations?hl=en&user=E4FUfrsAAAAJ), [Hoifung Poon](https://scholar.google.com/citations?user=yqqmVbkAAAAJ&hl=en), [Mu Wei‡](https://www.linkedin.com/in/mu-wei-038a3849/)
 
 
 **BoltzFormer** is designed for text promptable segmentation, with superior performance for small objects. It performs Boltzmann sampling within the attention mechanism in the transformer, allowing the model to efficiently focus on relevant regions to attend to. BoltzFormer employs an annealing process through the layers to let the model explore then exploit, mimicing a reinforcement learning process within the transformer itself.
@@ -11,8 +11,8 @@ This repository hosts the code for the paper **"Boltzmann Attention Sampling for
 Boltzmann attention sampling estimates a probability distribution on the image at every layer, and subsample a small portion of patches to attend to. The model learns to make better "guesses" through the layers, and gradually focus on the region of interest.   
 
 <div style="display: flex; align-items: center;">
-  <img src="assets/Attention.png" style="width:500px; margin-right: 10px;">
-  <img src="assets/Sampling.png" style="width:600px;">
+  <img src="assets/Attention.png" style="width:400px; margin-right: 10px;">
+  <img src="assets/Sampling.png" style="width:500px;">
 </div>
 
 ## Installation
@@ -87,3 +87,15 @@ output = model(input, mode="train")
 loss = loss_fn(output['predictions']['pred_gmasks'], mask_tensor.unsqueeze(0))
 print("Loss:", loss.item())
 ```
+
+
+## Citation
+If you use BoltzFormer in your research, please use the following for citation.
+```sh
+@article{zhao2025boltzmann,
+  title={Boltzmann Attention Sampling for Image Analysis with Small Objects},
+  author={Zhao, Theodore and Kiblawi, Sid and Usuyama, Naoto and Lee, Ho Hin and Preston, Sam and Poon, Hoifung and Wei, Mu},
+  journal={arXiv preprint arXiv:2503.02841},
+  year={2025}
+}
+``` 
