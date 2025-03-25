@@ -12,7 +12,7 @@ opencv-python==4.9.0.80
 setuptools==65.6.3
 packaging==23.0
 deepspeed==0.14.2
-transformers==4.40.0
+transformers==4.48.0
 open-clip-torch==2.26.1
 sentencepiece==0.2.0
 ninja==1.11.1.1
