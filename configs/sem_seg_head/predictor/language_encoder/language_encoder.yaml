@@ -1,0 +1,24 @@
+_target_: modeling.transformer_decoder.language_encoders.language_encoder.LanguageEncoder
+tokenizer:
+  _target_: transformers.AutoTokenizer.from_pretrained
+  pretrained_model_name_or_path: openai/clip-vit-base-patch32
+tokenizer_type: clip
+encoder_transformer:
+  _target_: modeling.transformer_decoder.language_encoders.language_transformer.get_transformer_encoder
+  config_encoder:
+    CONTEXT_LENGTH: 77
+    VOCAB_SIZE: 49408
+    WIDTH: 512
+    LAYERS: 12
+    HEADS: 8
+    AUTOGRESSIVE: true
+    LOAD_PRETRAINED: false
+  verbose: true
+lang_projection:
+  _target_: torch.nn.Parameter
+  data:
+    _target_: torch.randn
+    size: 
+      - 512 
+      - 512
+max_token_num: 77

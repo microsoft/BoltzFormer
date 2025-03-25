@@ -1,0 +1,19 @@
+defaults:
+  - language_encoder: language_encoder
+_target_: modeling.transformer_decoder.boltzformer_decoder.BoltzFormerDecoder
+in_channels: 512
+hidden_dim: 512
+dim_proj: 512
+num_queries: 101
+nheads: 8
+dim_feedforward: 2048
+pre_norm: false
+enforce_input_project: false
+dec_layers: 9
+mask_dim: 512
+boltzmann_sampling:
+  mask_threshold: 1.1
+  do_boltzmann: True
+  sample_ratio: 0.1
+  base_temp: 1
+pre_self_attention: True

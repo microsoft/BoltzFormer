@@ -1,0 +1,10 @@
+_target_: modeling.pixel_decoder.transformer_encoder_fpn.TransformerEncoderPixelDecoder
+transformer_dropout: 0.0
+transformer_nheads: 8
+transformer_dim_feedforward: 2048
+transformer_enc_layers: 6
+conv_dim: 512
+mask_dim: 512
+norm: "GN"
+transformer_pre_norm: False
+mask_on: True

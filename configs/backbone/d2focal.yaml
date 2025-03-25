@@ -1,0 +1,21 @@
+_target_: modeling.backbone.focal.D2FocalNet
+pretrain_img_size: 224
+patch_size: 4
+embed_dim: 192
+in_chans: 3
+depths: [2,2,18,2]
+focal_levels: [4,4,4,4]
+focal_windows: [3,3,3,3]
+drop_rate: 0.0
+drop_path_rate: 0.3
+mlp_ratio: 4.0
+patch_norm: true
+use_conv_embed: true
+use_checkpoint: false
+out_indices: [0,1,2,3]
+scaling_modulator: true
+use_layerscale: true
+out_features: ["res2", "res3", "res4", "res5"]
+use_postln: true
+use_postln_in_modulation: false
+

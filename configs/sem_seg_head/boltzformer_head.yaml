@@ -1,0 +1,4 @@
+defaults:
+  - pixel_decoder: transformer_encoder_fpn
+  - predictor: boltzformer_decoder
+_target_: modeling.boltzformer.MaskFormerHead
