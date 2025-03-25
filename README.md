@@ -3,14 +3,14 @@
 [Theodore Zhao*](https://theodore-zhao.github.io/theozhao/), [Sid Kiblawi*](https://sidkiblawi.github.io/about/), [Naoto Usuyama](https://www.microsoft.com/en-us/research/people/naotous/), [Ho Hin Lee](https://scholar.google.com/citations?user=BsBdSpoAAAAJ&hl=en), [Sam Preston](https://scholar.google.com/citations?hl=en&user=E4FUfrsAAAAJ), [Hoifung Poon](https://scholar.google.com/citations?user=yqqmVbkAAAAJ&hl=en), [Mu Wei‡](https://www.linkedin.com/in/mu-wei-038a3849/)
 
 
-**BoltzFormer** is designed for text promptable segmentation, with superior performance for small objects. It performs Boltzmann sampling within the attention mechanism in the transformer, allowing the model to efficiently focus on relevant regions to attend to. BoltzFormer employs an annealing process through the layers to let the model explore then exploit, mimicing a reinforcement learning process within the transformer itself.
+**BoltzFormer** is designed for text promptable segmentation, with superior performance for small objects. It performs Boltzmann sampling within the attention mechanism in the transformer, allowing the model to efficiently focus on relevant regions to attend to. BoltzFormer employs an annealing process through the layers to let the model explore then exploit, mimicking a reinforcement learning process within the transformer itself.
 
-<img src='assets/Model.png' width=750>
+<img src='assets/Model.png' width=750 alt="Architecture diagram of BoltzFormer showing the transformer model with Boltzmann attention sampling mechanism">
 
 **See less, learn more**
-Boltzmann attention sampling estimates a probability distribution on the image at every layer, and subsample a small portion of patches to attend to. The model learns to make better "guesses" through the layers, and gradually focus on the region of interest.   
+Boltzmann attention sampling estimates a probability distribution on the image at every layer, and subsamples a small portion of patches to attend to. The model learns to make better "guesses" through the layers, and gradually focus on the region of interest.
 
-<img src='assets/AttentionSampling.png' width=750>
+<img src='assets/AttentionSampling.png' width=750 alt="Visualization of Boltzmann attention sampling process showing how the model progressively focuses on regions of interest through different layers">
 
 ## Installation
 ```sh
@@ -33,7 +33,7 @@ pip install git+https://github.com/facebookresearch/detectron2.git
 ## Example Usage
 We provide the basic model forward pass usage below. We will release the associated training and evaluation framework soon.
 
-```sh
+```python
 from PIL import Image
 import torch
 import numpy as np
@@ -51,7 +51,7 @@ model = hydra.utils.instantiate(cfg, _convert_="object")
 ```
 
 ### Example Input and Output
-```sh
+```python
 # Load an example input image
 image = Image.open("examples/01_CT_lung.png").convert("RGB")
 image_array = np.array(image, dtype=np.float32)
@@ -68,7 +68,7 @@ print(mask_tensor.shape, mask_tensor.max(), mask_tensor.min())
 text = 'lung nodule in CT scan'
 ```
 
-```sh
+```python
 from utils.loss import BoltzFormerLoss
 
 loss_fn = BoltzFormerLoss()
@@ -89,11 +89,11 @@ print("Loss:", loss.item())
 
 ## Citation
 If you use BoltzFormer in your research, please use the following for citation.
-```sh
+```bibtex
 @article{zhao2025boltzmann,
   title={Boltzmann Attention Sampling for Image Analysis with Small Objects},
   author={Zhao, Theodore and Kiblawi, Sid and Usuyama, Naoto and Lee, Ho Hin and Preston, Sam and Poon, Hoifung and Wei, Mu},
   journal={arXiv preprint arXiv:2503.02841},
   year={2025}
 }
-``` 
+```
