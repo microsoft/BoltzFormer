@@ -5,14 +5,14 @@ This repository hosts the code for the paper **"Boltzmann Attention Sampling for
 
 **BoltzFormer** is designed for text promptable segmentation, with superior performance for small objects. It performs Boltzmann sampling within the attention mechanism in the transformer, allowing the model to efficiently focus on relevant regions to attend to. BoltzFormer employs an annealing process through the layers to let the model explore then exploit, mimicing a reinforcement learning process within the transformer itself.
 
-<img src='assets/Model.png' width=700>
+<img src='assets/Model.png' width=800>
 
 **See less, learn more**
 Boltzmann attention sampling estimates a probability distribution on the image at every layer, and subsample a small portion of patches to attend to. The model learns to make better "guesses" through the layers, and gradually focus on the region of interest.   
 
 <div style="display: flex; align-items: center;">
-  <img src="assets/Attention.png" style="width:300px; margin-right: 10px;">
-  <img src="assets/Sampling.png" style="width:590px;">
+  <img src="assets/Attention.png" style="width:500px; margin-right: 10px;">
+  <img src="assets/Sampling.png" style="width:600px;">
 </div>
 
 ## Installation
