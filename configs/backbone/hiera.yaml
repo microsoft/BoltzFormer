@@ -19,4 +19,4 @@ neck:
   backbone_channel_list: [768, 384, 192, 96]
   fpn_top_down_levels: [2, 3]
   fpn_interp_model: nearest
-ckpt_path: null #PretrainedModels/sam2_hiera_small.pt
+ckpt_path: PretrainedModels/sam2_hiera_small.pt

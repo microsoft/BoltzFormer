@@ -29,6 +29,16 @@ pip install -r assets/requirements.txt
 pip install git+https://github.com/facebookresearch/detectron2.git
 ```
 
+### Use Pretrained Backbones
+Initializing the model with image backbone pretrained in [SEEM](https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once) or [SAM2](https://github.com/facebookresearch/sam2) can significantly speed up the training. The model weights can be downloaded as follows:
+
+```sh
+mkdir PretrainedModels
+cd PretrainedModels/
+wget https://huggingface.co/xdecoder/X-Decoder/resolve/main/xdecoder_focall_last_oq101.pt
+wget https://dl.fbaipublicfiles.com/segment_anything_2/072824/sam2_hiera_small.pt
+wget https://dl.fbaipublicfiles.com/segment_anything_2/072824/sam2_hiera_base_plus.pt
+```
 
 ## Example Usage
 We provide the basic model forward pass usage below. We will release the associated training and evaluation framework soon.
@@ -44,10 +54,15 @@ from hydra.core.global_hydra import GlobalHydra
 # Initialize Hydra and load configuration
 GlobalHydra.instance().clear()
 hydra.initialize(config_path="configs", job_name="example_prediction")
-cfg = compose(config_name="boltzformer_model")
+
+model_name = "boltzformer_focal-l" # other options: "boltzformer_hiera-s", "boltzformer_hiera-bp"
+cfg = compose(config_name=model_name)
 
 # Instantiate the model from the configuration
 model = hydra.utils.instantiate(cfg, _convert_="object")
+if model_name == "boltzformer_focal-l":
+    # initialize the FocalNet backbone with SEEM pretrained weights for easier finetuning
+    model.load_pretrained("PretrainedModels/xdecoder_focall_last_oq101.pt")
 ```
 
 ### Example Input and Output

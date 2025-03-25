@@ -1,0 +1,6 @@
+defaults:
+  - backbone: hiera_BP
+  - sem_seg_head: boltzformer_head
+_target_: modeling.boltzformer.BoltzFormerModel
+convolute_outputs: True
+out_channels_1: 10
