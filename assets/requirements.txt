@@ -1,6 +1,6 @@
 --extra-index-url https://download.pytorch.org/whl/cu124
 numpy==1.26.4
-torch==2.6.0+cu124
+torch==2.7.1
 torchvision==0.21.0+cu124
 torchaudio==2.6.0+cu124
 pandas==2.2.2
